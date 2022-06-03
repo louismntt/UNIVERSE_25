@@ -49,14 +49,22 @@ imagePreviewDescription.appendChild(layerName);
 
   imagePreviewContainer.addEventListener("click", function(){
 
+    if (activeLayer1 == "assets/pngs/" + layer1ImagesArray[this.value][0]) {
+      console.log('detction clear');
+      layerCheckbox.src = "assets/svg/unchecked-box.svg";
+      activeLayer1 = "";
+    } else {
+
     var nodes = layer1ImagesContainer.getElementsByClassName("layer-checkbox");
+
     for(var i=0; i<nodes.length; i++) {
       nodes[i].src = "assets/svg/unchecked-box.svg";
     }
     layerCheckbox.src = "assets/svg/checked-box.svg";
-
     console.log('ça clique sur ' + this.value);
     activeLayer1 = "assets/pngs/" + layer1ImagesArray[this.value][0];
+
+    }
     draw();
   })
 
@@ -94,14 +102,22 @@ imagePreviewDescription.appendChild(layerName);
 
   imagePreviewContainer.addEventListener("click", function(){
 
+    if (activeLayer2 == "assets/pngs/" + layer2ImagesArray[this.value][0]) {
+      console.log('detction clear');
+      layerCheckbox.src = "assets/svg/unchecked-box.svg";
+      activeLayer2 = "";
+    } else {
+
     var nodes = layer2ImagesContainer.getElementsByClassName("layer-checkbox");
+
     for(var i=0; i<nodes.length; i++) {
       nodes[i].src = "assets/svg/unchecked-box.svg";
     }
     layerCheckbox.src = "assets/svg/checked-box.svg";
-
     console.log('ça clique sur ' + this.value);
     activeLayer2 = "assets/pngs/" + layer2ImagesArray[this.value][0];
+
+    }
     draw();
   })
 
@@ -139,20 +155,28 @@ imagePreviewDescription.appendChild(layerName);
 
   imagePreviewContainer.addEventListener("click", function(){
 
+    if (activeLayer3 == "assets/pngs/" + layer3ImagesArray[this.value][0]) {
+      console.log('detction clear');
+      layerCheckbox.src = "assets/svg/unchecked-box.svg";
+      activeLayer3 = "";
+    } else {
+
     var nodes = layer3ImagesContainer.getElementsByClassName("layer-checkbox");
+
     for(var i=0; i<nodes.length; i++) {
       nodes[i].src = "assets/svg/unchecked-box.svg";
     }
     layerCheckbox.src = "assets/svg/checked-box.svg";
-
     console.log('ça clique sur ' + this.value);
     activeLayer3 = "assets/pngs/" + layer3ImagesArray[this.value][0];
+
+    }
     draw();
   })
 
 }
 
-// LAYER 3
+// LAYER 4
 
 const layer4ImagesContainer = document.getElementById('layer4-images-container');
 var activeLayer4 = "";
@@ -184,18 +208,30 @@ imagePreviewDescription.appendChild(layerName);
 
   imagePreviewContainer.addEventListener("click", function(){
 
+    if (activeLayer4 == "assets/pngs/" + layer4ImagesArray[this.value][0]) {
+      console.log('detction clear');
+      layerCheckbox.src = "assets/svg/unchecked-box.svg";
+      activeLayer4 = "";
+    } else {
+
     var nodes = layer4ImagesContainer.getElementsByClassName("layer-checkbox");
+
     for(var i=0; i<nodes.length; i++) {
       nodes[i].src = "assets/svg/unchecked-box.svg";
     }
     layerCheckbox.src = "assets/svg/checked-box.svg";
-
     console.log('ça clique sur ' + this.value);
     activeLayer4 = "assets/pngs/" + layer4ImagesArray[this.value][0];
+
+    }
+
     draw();
   })
-
 }
+
+
+
+
 const selectionContainer = document.getElementsByClassName('selection-container');
 
 const refreshButton = document.getElementById('refresh-button');
@@ -212,13 +248,40 @@ refreshButton.addEventListener('click', function(){
   activeLayer2 = '';
   activeLayer3 = '';
   activeLayer4 = '';
+
   draw();
 
 })
 
+// BUTTONS TO SCROLL HORIZONTALLY INTO LAYERS
+
+const imagesContainers = document.querySelectorAll('.images-container');
+
+const arrowsLeft = document.querySelectorAll('.arrow-left');
+console.log(arrowsLeft);
+
+const arrowsRight = document.querySelectorAll('.arrow-right');
+console.log(arrowsRight);
+
+for (var i = 0; i < arrowsLeft.length; i++) {
+  arrowsLeft[i].addEventListener("click", function() {
+        for (var e = 0; e < imagesContainers.length; e++) {
+           imagesContainers[e].scrollLeft -= 200;
+        }
+      });
+}
+
+for (var i = 0; i < arrowsRight.length; i++) {
+  arrowsRight[i].addEventListener("click", function() {
+        for (var e = 0; e < imagesContainers.length; e++) {
+           imagesContainers[e].scrollLeft += 200;
+        }
+      });
+}
 
 
-// PUTTING PNGS TO CANVAS
+
+// PUTTING PNGS TO CANVAS ——— 
 
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext('2d');
@@ -255,6 +318,10 @@ function draw() {
       context.drawImage(layer4, 0, 0, canvas.width, canvas.height);
     };
     layer4.src = activeLayer4;
+
+
+
+
 
   };
   layer0.src = "assets/pngs/" + activeLayer0;

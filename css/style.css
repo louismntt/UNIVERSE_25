@@ -311,6 +311,8 @@ transform: rotate(-90deg);
 
 /* ——— LAYER SELECTION ——— */
 
+
+
 .selection-container {
   border-left: solid 2px var(--active-green);
   border-right: solid 2px var(--active-green);
@@ -363,6 +365,7 @@ transform: rotate(-90deg);
 .images-container {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+  scroll-behavior: smooth;
 }
 
 .image-preview-container{
@@ -407,8 +410,30 @@ transform: rotate(-90deg);
   max-width: 100%;
 }
 
+.arrow-left {
+  position: absolute;
+  top: 25%;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--active-green);
+}
+
+.arrow-right {
+  position: absolute;
+  top: 25%;
+  transform: rotate(180deg);
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--active-green);
+}
+
+
+
 .show > .layer {
   display: block;
+  position: relative;
 }
 
 .show > .visible-part {
